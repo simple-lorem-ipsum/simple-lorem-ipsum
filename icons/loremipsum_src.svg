@@ -15,10 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="loremipsum_org.svg"
-   inkscape:export-filename="/var/www/simple-lorem-ipsum/icons/loremipsum_32.png"
-   inkscape:export-xdpi="44.999947"
-   inkscape:export-ydpi="44.999947">
+   sodipodi:docname="loremipsum_src.svg"
+   inkscape:export-filename="/var/www/simple-lorem-ipsum/icons/loremipsum_64.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <title
      id="title4317">Lorem Ipsum</title>
   <defs
@@ -31,8 +31,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="-12.42002"
-     inkscape:cy="-7.2377966"
+     inkscape:cx="-14.061518"
+     inkscape:cy="11.955102"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"

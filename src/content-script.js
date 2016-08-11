@@ -8,17 +8,25 @@ const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ' 
   'At vero eos et accusam et justo duo dolores et ea rebum. ' +
   'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ';
 
+// load text from config, use constant as fallback
+let loremIpsumText = LOREM_IPSUM;
+browser.storage.local.get('loremIpsum', (item) => {
+  if (!browser.runtime.lastError && item && item.loremIpsum) {
+    loremIpsumText = item.loremIpsum;
+  }
+});
+
 function insertLoremIpsum(fillAllFields = false) {
   let node = document.activeElement;
   if (fillAllFields === true) {
     for (let item of node.form.elements) {
       if (item.tagName === 'TEXTAREA' || (item.tagName === 'INPUT' && /text|search|email/.test(item.type))) {
-        item.value += LOREM_IPSUM;
+        item.value += loremIpsumText;
       }
     }
   } else {
     if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
-      node.value += LOREM_IPSUM;
+      node.value += loremIpsumText;
     }
   }
 }

@@ -14,5 +14,13 @@
   "contextmenuInsertLoremIpsumAllFields": {
     "message": "Alle Felder in diesem Formular befüllen",
     "description": "Name of the context menu entry for all fields"
+  },
+  "optionsLoremIpsumLabel": {
+    "message": "Bitte geben Sie hier Ihren eigenen Platzhaltertext ein oder lassen Sie das Feld leer, um den Standard-Lorem-Ipsum-Text zu verwenden",
+    "description": "Lorem Ipsum label on options page"
+  },
+  "optionsStorageCannotSave": {
+    "message": "Die Einstellungen können nicht gespeichert werden. Bitte erlauben Sie Simple Lorem Ipsum in den localStorage zu speichern.",
+    "description": "Cannot save options to storage"
   }
 }

@@ -14,5 +14,13 @@
   "contextmenuInsertLoremIpsumAllFields": {
     "message": "Fill all fields of this form",
     "description": "Name of the context menu entry for all fields"
+  },
+  "optionsLoremIpsumLabel": {
+    "message": "Please specify your custom dummy text or leave it blank to use default Lorem Ipsum",
+    "description": "Lorem Ipsum label on options page"
+  },
+  "optionsStorageCannotSave": {
+    "message": "Cannot save options to storage. Please allow Simple Lorem Ipsum to save to localStorage to save your settings.",
+    "description": "Cannot save options to storage"
   }
 }

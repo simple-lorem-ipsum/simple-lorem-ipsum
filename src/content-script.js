@@ -12,8 +12,7 @@ function insertLoremIpsum() {
 
     let node = document.activeElement;
 
-    if (node.tagName === 'INPUT' && (node.type === 'text' || node.type === 'search') ||
-        node.tagName === 'TEXTAREA') {
+    if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
         node.value += LOREM_IPSUM;
     }
 }

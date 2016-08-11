@@ -6,11 +6,11 @@ if (typeof browser === 'undefined') {
 let translate = browser.i18n.getMessage;
 
 // notify content script
-let insertLoremIpsum = () => {
+function insertLoremIpsum() {
     browser.tabs.query({active: true, currentWindow: true}, (tabs) => {
         browser.tabs.sendMessage(tabs[0].id, {status: 'insertLoremIpsum'});
     });
-};
+}
 
 // register hotkey
 browser.commands.onCommand.addListener((command) => {

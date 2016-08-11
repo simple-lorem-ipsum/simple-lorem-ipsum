@@ -11,6 +11,12 @@ Lorem Ipsum dummy text. You can also achieve this using the hotkey
 If you want to bind the hotkey to another key, please consider installing
 [this extension](https://addons.mozilla.org/en-US/firefox/addon/s3menu-wizard/).
 
+You can also fill all sibling form fields of the selected form field automatically.
+Please consider, that currently only textarea, 
+input[text], input[search] and input[email] will be filled automatically.
+
+Furthermore you can specify your own dummy text in the extension options dialog.
+
 
 ## Requirements
 

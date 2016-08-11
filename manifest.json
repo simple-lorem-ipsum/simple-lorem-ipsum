@@ -40,5 +40,10 @@
   "permissions": [
     "contextMenus",
     "storage"
-  ]
+  ],
+  "applications": {
+    "gecko": {
+      "id": "jid0-aU64eWN4jFT0bhC8D6ESFb9yWHw@jetpack"
+    }
+  }
 }

@@ -17,7 +17,7 @@ loremIpsum.placeholder = LOREM_IPSUM;
 
 // init default value from storage
 browser.storage.local.get('loremIpsum', (item) => {
-  if (!browser.runtime.lastError) {
+  if (!browser.runtime.lastError && item && item.loremIpsum) {
     loremIpsum.value = item.loremIpsum;
   }
 });

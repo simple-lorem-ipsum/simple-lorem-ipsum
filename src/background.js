@@ -4,9 +4,13 @@ if (typeof browser === 'undefined') {
 }
 
 // notify content script
-function insertLoremIpsum() {
+function insertLoremIpsum(fillAllFields = false) {
   browser.tabs.query({active: true, currentWindow: true}, (tabs) => {
-    browser.tabs.sendMessage(tabs[0].id, {status: 'insertLoremIpsum'});
+    if (fillAllFields === true) {
+      browser.tabs.sendMessage(tabs[0].id, {status: 'insertLoremIpsum', fillAllFields: true});
+    } else {
+      browser.tabs.sendMessage(tabs[0].id, {status: 'insertLoremIpsum', fillAllFields: false});
+    }
   });
 }
 
@@ -17,19 +21,20 @@ browser.commands.onCommand.addListener((command) => {
   }
 });
 
-// create context menu
+// create context menus
 browser.contextMenus.create({
-  id: 'contextmenuInsertLoremIpsum',
-  title: browser.i18n.getMessage('contextmenuInsertLoremIpsum'),
-  contexts: ['editable']
-});
-
-// create context menu handler
-browser.contextMenus.onClicked.addListener((info) => {
-  if (
-    info.menuItemId === 'contextmenuInsertLoremIpsum' &&
-    info.editable
-  ) {
+  id: 'contextmenuInsertLoremIpsumSingleField',
+  title: browser.i18n.getMessage('contextmenuInsertLoremIpsumSingleField'),
+  contexts: ['editable'],
+  onclick: () => {
     insertLoremIpsum();
+  }
+});
+browser.contextMenus.create({
+  id: 'contextmenuInsertLoremIpsumAllFields',
+  title: browser.i18n.getMessage('contextmenuInsertLoremIpsumAllFields'),
+  contexts: ['editable'],
+  onclick: () => {
+    insertLoremIpsum(true);
   }
 });

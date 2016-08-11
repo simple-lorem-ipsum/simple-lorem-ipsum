@@ -7,8 +7,12 @@
     "message": "Inserts 'Lorem Ipsum' text into the current focused input element.",
     "description": "Hotkey description of the extension"
   },
-  "contextmenuInsertLoremIpsum": {
+  "contextmenuInsertLoremIpsumSingleField": {
     "message": "Insert Lorem Ipsum (Ctrl+Shift+V)",
-    "description": "Name of the context menu entry"
+    "description": "Name of the context menu entry for single field"
+  },
+  "contextmenuInsertLoremIpsumAllFields": {
+    "message": "Fill all fields of this form",
+    "description": "Name of the context menu entry for all fields"
   }
 }

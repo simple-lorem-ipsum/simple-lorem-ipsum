@@ -1,0 +1,14 @@
+{
+  "extensionDescription": {
+    "message": "Simple Lorem Ipsum Generator befüllt Formularfelder über ein Kontextmenü oder einen Hotkey (Strg+Shift+V).",
+    "description": "Description of the extension"
+  },
+  "extensionHotkey": {
+    "message": "Fügt den Text 'Lorem Ipsum' in das fokussierte Eingabefeld ein.",
+    "description": "Hotkey description of the extension"
+  },
+  "contextmenuInsertLoremIpsum": {
+    "message": "Lorem Ipsum einfügen (Strg+Shift+V)",
+    "description": "Name of the context menu entry"
+  }
+}

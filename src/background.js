@@ -3,8 +3,6 @@ if (typeof browser === 'undefined') {
   var browser = chrome;
 }
 
-let translate = browser.i18n.getMessage;
-
 // notify content script
 function insertLoremIpsum() {
   browser.tabs.query({active: true, currentWindow: true}, (tabs) => {
@@ -22,7 +20,7 @@ browser.commands.onCommand.addListener((command) => {
 // create context menu
 browser.contextMenus.create({
   id: 'contextmenuInsertLoremIpsum',
-  title: translate('contextmenuInsertLoremIpsum'),
+  title: browser.i18n.getMessage('contextmenuInsertLoremIpsum'),
   contexts: ['editable']
 });
 

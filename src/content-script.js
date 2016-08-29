@@ -9,29 +9,39 @@ const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ' 
   'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ';
 
 // load text from config, use constant as fallback
-function getLoremIpsumFromConfig(node, cb) {
+function getLoremIpsumFromConfig(cb) {
   browser.storage.local.get('loremIpsum', (item) => {
     if (!browser.runtime.lastError && item && item.loremIpsum) {
-      cb(node, item.loremIpsum);
+      cb(item.loremIpsum);
     } else {
-      cb(node, LOREM_IPSUM);
+      cb(LOREM_IPSUM);
     }
   });
 }
 
+function isValidFormElement(item) {
+  return item.tagName === 'TEXTAREA' ||
+    (
+      item.tagName === 'INPUT' &&
+      /text|search|email/.test(item.type)
+    );
+}
+
 function insertLoremIpsum(fillAllFields = false) {
-  let node = document.activeElement;
-  if (fillAllFields === true) {
-    for (let item of node.form.elements) {
-      if (item.tagName === 'TEXTAREA' || (item.tagName === 'INPUT' && /text|search|email/.test(item.type))) {
-        getLoremIpsumFromConfig(item, (localNode, text) => localNode.value += text);
+  getLoremIpsumFromConfig((text) => {
+    let node = document.activeElement;
+    if (fillAllFields === true) {
+      for (let item of node.form.elements) {
+        if (isValidFormElement(item)) {
+          item.value += text;
+        }
+      }
+    } else {
+      if (isValidFormElement(node)) {
+        node.value += text;
       }
     }
-  } else {
-    if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
-      getLoremIpsumFromConfig(node, (localNode, text) => localNode.value += text);
-    }
-  }
+  });
 }
 
 browser.runtime.onMessage.addListener((request) => {

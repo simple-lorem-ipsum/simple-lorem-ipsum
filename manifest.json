@@ -23,7 +23,8 @@
       ],
       "js": [
         "src/content-script.js"
-      ]
+      ],
+      "all_frames": true
     }
   ],
   "commands": {

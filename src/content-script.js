@@ -39,6 +39,8 @@ function insertLoremIpsum(fillAllFields = false) {
     } else {
       if (isValidFormElement(node)) {
         node.value += text;
+      } else if (node.contentEditable == 'true') {
+        node.innerHTML += text;
       }
     }
   });

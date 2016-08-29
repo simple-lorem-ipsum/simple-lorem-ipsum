@@ -9,24 +9,31 @@ const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ' 
   'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ';
 
 // load text from config, use constant as fallback
-let loremIpsumText = LOREM_IPSUM;
-browser.storage.local.get('loremIpsum', (item) => {
-  if (!browser.runtime.lastError && item && item.loremIpsum) {
-    loremIpsumText = item.loremIpsum;
-  }
-});
+function getLoremIpsumFromConfig(node, cb) {
+  browser.storage.local.get('loremIpsum', (item) => {
+    if (!browser.runtime.lastError && item && item.loremIpsum) {
+      cb(node, item.loremIpsum);
+    } else {
+      cb(node, LOREM_IPSUM);
+    }
+  });
+}
 
 function insertLoremIpsum(fillAllFields = false) {
   let node = document.activeElement;
   if (fillAllFields === true) {
     for (let item of node.form.elements) {
       if (item.tagName === 'TEXTAREA' || (item.tagName === 'INPUT' && /text|search|email/.test(item.type))) {
-        item.value += loremIpsumText;
+        getLoremIpsumFromConfig(item, function(localNode, text) {
+          localNode.value += text;
+        });
       }
     }
   } else {
     if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
-      node.value += loremIpsumText;
+      getLoremIpsumFromConfig(node, function(localNode, text) {
+        localNode.value += text;
+      });
     }
   }
 }

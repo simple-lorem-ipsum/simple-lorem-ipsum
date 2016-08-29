@@ -24,16 +24,12 @@ function insertLoremIpsum(fillAllFields = false) {
   if (fillAllFields === true) {
     for (let item of node.form.elements) {
       if (item.tagName === 'TEXTAREA' || (item.tagName === 'INPUT' && /text|search|email/.test(item.type))) {
-        getLoremIpsumFromConfig(item, function(localNode, text) {
-          localNode.value += text;
-        });
+        getLoremIpsumFromConfig(item, (localNode, text) => localNode.value += text);
       }
     }
   } else {
     if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
-      getLoremIpsumFromConfig(node, function(localNode, text) {
-        localNode.value += text;
-      });
+      getLoremIpsumFromConfig(node, (localNode, text) => localNode.value += text);
     }
   }
 }

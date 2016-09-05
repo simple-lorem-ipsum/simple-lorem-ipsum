@@ -22,5 +22,13 @@
   "optionsStorageCannotSave": {
     "message": "Die Einstellungen können nicht gespeichert werden. Bitte erlauben Sie Simple Lorem Ipsum in den localStorage zu speichern.",
     "description": "Cannot save options to storage"
+  },
+  "popupLinkHelp": {
+    "message": "Hilfe",
+    "description": "Link label for help"
+  },
+  "popupLinkBugs": {
+    "message": "Fehler melden",
+    "description": "Link label for bugs"
   }
 }

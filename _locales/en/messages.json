@@ -22,5 +22,13 @@
   "optionsStorageCannotSave": {
     "message": "Cannot save options to storage. Please allow Simple Lorem Ipsum to save to localStorage to save your settings.",
     "description": "Cannot save options to storage"
+  },
+  "popupLinkHelp": {
+    "message": "Help",
+    "description": "Link label for help"
+  },
+  "popupLinkBugs": {
+    "message": "Bugs",
+    "description": "Link label for bugs"
   }
 }

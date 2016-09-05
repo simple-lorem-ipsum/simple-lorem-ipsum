@@ -8,11 +8,17 @@ const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ' 
   'At vero eos et accusam et justo duo dolores et ea rebum. ' +
   'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ';
 
+let translate = browser.i18n.getMessage;
+
 let loremIpsum = document.getElementById('loremipsum');
 let loremIpsumLabel = document.getElementById('loremipsum_label');
+let help = document.getElementById('help');
+let bugs = document.getElementById('bugs');
 
 // init labels and placeholders
-loremIpsumLabel.textContent = browser.i18n.getMessage('optionsLoremIpsumLabel');
+help.textContent = translate('popupLinkHelp');
+bugs.textContent = translate('popupLinkBugs');
+loremIpsumLabel.textContent = translate('optionsLoremIpsumLabel');
 loremIpsum.placeholder = LOREM_IPSUM;
 
 // init default value from storage
@@ -22,11 +28,14 @@ browser.storage.local.get('loremIpsum', (item) => {
   }
 });
 
-// save modified value on keyup to storage
-loremIpsum.addEventListener('keyup', () => {
+// save modified value to local storage
+function saveHandler() {
   browser.storage.local.set({loremIpsum: loremIpsum.value}, () => {
     if (browser.runtime.lastError) {
       alert(browser.i18n.getMessage('optionsStorageCannotSave'));
     }
   });
-});
+}
+
+loremIpsum.addEventListener('keyup', saveHandler);
+loremIpsum.addEventListener('change', saveHandler);

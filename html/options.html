@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Options</title>
+	<title>Options - Simple Lorem Ipsum</title>
 	<style>
+		html, body {
+			font-family: Helvetica, Arial, sans-serif;
+			padding: 5px;
+		}
+
 		label {
-			font-size: 120%;
+			font-size: 100%;
 			font-style: italic;
+			font-family: Helvetica, Arial, sans-serif;
+			display: block;
 		}
 
 		textarea {
@@ -14,11 +21,26 @@
 			height: 250px;
 			resize: none;
 		}
+
+		p {
+			text-align: right;
+		}
+
+		a {
+			color: #000000;
+			text-decoration: none;
+			border: 1px solid transparent;
+		}
 	</style>
 </head>
 <body>
 <label for="loremipsum" id="loremipsum_label"></label>
 <textarea id="loremipsum"></textarea>
+<p>
+	<a id="help" href="https://simple-lorem-ipsum.github.io/" target="_blank">Help</a>
+	|
+	<a id="bugs" href="https://github.com/simple-lorem-ipsum/simple-lorem-ipsum/issues" target="_blank">Bugs</a>
+</p>
 <script src="../src/options.js"></script>
 </body>
 </html>

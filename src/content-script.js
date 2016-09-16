@@ -8,7 +8,11 @@ const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ' 
   'At vero eos et accusam et justo duo dolores et ea rebum. ' +
   'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ';
 
-// load text from config, use constant as fallback
+/**
+ * load text from config, use constant as fallback
+ *
+ * @param cb
+ */
 function getLoremIpsumFromConfig(cb) {
   browser.storage.local.get('loremIpsum', (item) => {
     if (!browser.runtime.lastError && item && item.loremIpsum) {
@@ -19,6 +23,12 @@ function getLoremIpsumFromConfig(cb) {
   });
 }
 
+/**
+ * check if the form element is valid to be filled
+ *
+ * @param item
+ * @returns {boolean}
+ */
 function isValidFormElement(item) {
   return item.tagName === 'TEXTAREA' ||
     (
@@ -27,6 +37,28 @@ function isValidFormElement(item) {
     );
 }
 
+/**
+ * check if the given node is editable or
+ * is inside of an editable parent element
+ *
+ * @param node
+ * @returns {boolean}
+ */
+function isInsideEditable(node) {
+  let tempNode = node;
+  while(tempNode.parentNode) {
+    if(tempNode.contentEditable) {
+      return true;
+    }
+    tempNode = tempNode.parentNode;
+  }
+}
+
+/**
+ * insert lorem ipsum dummy text
+ *
+ * @param fillAllFields
+ */
 function insertLoremIpsum(fillAllFields = false) {
   getLoremIpsumFromConfig((text) => {
     let node = document.activeElement;
@@ -39,8 +71,8 @@ function insertLoremIpsum(fillAllFields = false) {
     } else {
       if (isValidFormElement(node)) {
         node.value += text;
-      } else if (node.contentEditable == 'true') {
-        node.innerHTML += text;
+      } else if (isInsideEditable(node)) {
+        node.innerHTML += `<p>${text}</p>`;
       }
     }
   });

@@ -46,12 +46,13 @@ function isValidFormElement(item) {
  */
 function isInsideEditable(node) {
   let tempNode = node;
-  while(tempNode.parentNode) {
-    if(tempNode.contentEditable) {
+  while (tempNode.parentNode) {
+    if (tempNode.contentEditable) {
       return true;
     }
     tempNode = tempNode.parentNode;
   }
+  return false;
 }
 
 /**
@@ -63,19 +64,35 @@ function insertLoremIpsum(fillAllFields = false) {
   getLoremIpsumFromConfig((text) => {
     let node = document.activeElement;
     if (fillAllFields === true) {
-      for (let item of node.form.elements) {
-        if (isValidFormElement(item)) {
-          item.value += text;
+      for (let currentNode of node.form.elements) {
+        if (isValidFormElement(currentNode)) {
+          insertText(currentNode, text);
         }
       }
     } else {
       if (isValidFormElement(node)) {
-        node.value += text;
+        insertText(node, text);
       } else if (isInsideEditable(node)) {
         node.innerHTML += `<p>${text}</p>`;
       }
     }
   });
+}
+
+/**
+ * insert text into the given dom node at current cursor position
+ *
+ * @param node
+ * @param newValue
+ */
+function insertText(node, newValue) {
+  let start = node.selectionStart;
+  let oldValue = node.value;
+  let before = oldValue.substring(0, start);
+  let after = oldValue.substring(node.selectionEnd, oldValue.length);
+  node.value = before + newValue + after;
+  node.selectionStart = node.selectionEnd = start + newValue.length;
+  node.focus();
 }
 
 browser.runtime.onMessage.addListener((request) => {

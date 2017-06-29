@@ -30,11 +30,9 @@ function getLoremIpsumFromConfig(cb) {
  * @returns {boolean}
  */
 function isValidFormElement(item) {
-  return item.tagName === 'TEXTAREA' ||
-    (
-      item.tagName === 'INPUT' &&
-      /text|search|email/.test(item.type)
-    );
+  const isTextarea = item.tagName === 'TEXTAREA';
+  const isInput = item.tagName === 'INPUT' && /text|search|email/.test(item.type);
+  return isTextarea || isInput;
 }
 
 /**

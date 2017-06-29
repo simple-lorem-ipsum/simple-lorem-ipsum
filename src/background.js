@@ -3,14 +3,15 @@ if (typeof browser === 'undefined') {
   var browser = chrome;
 }
 
-// notify content script
+/**
+ * notify the content script to insert the lorem ipsum.
+ * optionally notifiy if all fields of the form should be filled.
+ *
+ * @param fillAllFields
+ */
 function insertLoremIpsum(fillAllFields = false) {
   browser.tabs.query({active: true, currentWindow: true}, (tabs) => {
-    if (fillAllFields === true) {
-      browser.tabs.sendMessage(tabs[0].id, {status: 'insertLoremIpsum', fillAllFields: true});
-    } else {
-      browser.tabs.sendMessage(tabs[0].id, {status: 'insertLoremIpsum', fillAllFields: false});
-    }
+    browser.tabs.sendMessage(tabs[0].id, {status: 'insertLoremIpsum', fillAllFields});
   });
 }
 

@@ -1,19 +1,27 @@
 {
   "extensionDescription": {
-    "message": "Simple Lorem Ipsum Generator fills form fields by using context menu or a hotkey (Ctrl+Shift+V).",
+    "message": "Simple Lorem Ipsum fills form fields by using context menu or a hotkey (Ctrl+Shift+V).",
     "description": "Description of the extension"
   },
-  "extensionHotkey": {
-    "message": "Inserts 'Lorem Ipsum' text into the current focused input element.",
-    "description": "Hotkey description of the extension"
+  "extensionHotkeyInsert": {
+    "message": "Hotkey to insert 'Lorem Ipsum' text into the current focused input element.",
+    "description": "Hotkey description of the insert mode"
+  },
+  "extensionHotkeyEditMode": {
+    "message": "Hotkey to select an element to modify the text and optionally insert Lorem Ipsum text.",
+    "description": "Hotkey description of the edit mode"
   },
   "contextmenuInsertLoremIpsumSingleField": {
-    "message": "Insert Lorem Ipsum (Ctrl+Shift+V)",
+    "message": "Insert Lorem Ipsum (F9)",
     "description": "Name of the context menu entry for single field"
   },
   "contextmenuInsertLoremIpsumAllFields": {
     "message": "Fill all fields of this form",
     "description": "Name of the context menu entry for all fields"
+  },
+  "contextmenuToggleEditmode": {
+    "message": "Toggle Edit Mode",
+    "description": "Toggle Edit Mode"
   },
   "optionsLoremIpsumLabel": {
     "message": "Please specify your custom dummy text or leave it blank to use default Lorem Ipsum",
@@ -23,6 +31,10 @@
     "message": "Cannot save options to storage. Please allow Simple Lorem Ipsum to save to localStorage to save your settings.",
     "description": "Cannot save options to storage"
   },
+  "optionsInvalidKey": {
+    "message": "Invalid Hotkey",
+    "description": "Invalid Hotkey"
+  },
   "popupLinkHelp": {
     "message": "Help",
     "description": "Link label for help"
@@ -30,5 +42,13 @@
   "popupLinkBugs": {
     "message": "Bugs",
     "description": "Link label for bugs"
+  },
+  "contentInfoboxCharacters": {
+    "message": "Characters",
+    "description": "Characters in Infobox"
+  },
+  "contentInfoboxWords": {
+    "message": "Words",
+    "description": "Words in Infobox"
   }
 }

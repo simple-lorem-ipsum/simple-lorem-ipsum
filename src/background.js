@@ -15,10 +15,20 @@ function insertLoremIpsum(fillAllFields = false) {
   });
 }
 
+function toggleLoremIpsumEditmode() {
+  browser.tabs.query({active: true, currentWindow: true}, (tabs) => {
+    browser.tabs.sendMessage(tabs[0].id, {status: 'toggleLoremIpsumEditmode'});
+  });
+}
+
 // register hotkey
 browser.commands.onCommand.addListener((command) => {
   if (command === 'insert-lorem-ipsum') {
     insertLoremIpsum();
+  }
+
+  if (command === 'toggle-lorem-ipsum-editmode') {
+    toggleLoremIpsumEditmode();
   }
 });
 
@@ -37,5 +47,13 @@ browser.contextMenus.create({
   contexts: ['editable'],
   onclick: () => {
     insertLoremIpsum(true);
+  }
+});
+
+browser.contextMenus.create({
+  id: 'contextmenuToggleEditmode',
+  title: browser.i18n.getMessage('contextmenuToggleEditmode'),
+  onclick: () => {
+    toggleLoremIpsumEditmode(true);
   }
 });

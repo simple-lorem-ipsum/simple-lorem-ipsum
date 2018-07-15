@@ -1,19 +1,27 @@
 {
   "extensionDescription": {
-    "message": "Simple Lorem Ipsum Generator befüllt Formularfelder über ein Kontextmenü oder einen Hotkey (Strg+Shift+V).",
+    "message": "Simple Lorem Ipsum befüllt Formularfelder über ein Kontextmenü oder einen Hotkey (Strg+Shift+V).",
     "description": "Description of the extension"
   },
-  "extensionHotkey": {
-    "message": "Fügt den Text 'Lorem Ipsum' in das fokussierte Eingabefeld ein.",
-    "description": "Hotkey description of the extension"
+  "extensionHotkeyInsert": {
+    "message": "Tastenkombination um den Text 'Lorem Ipsum' in das fokussierte Eingabefeld einzufügen.",
+    "description": "Hotkey description of the insert mode"
+  },
+  "extensionHotkeyEditMode": {
+    "message": "Tastenkombination um ein Element zur Modifikation auszuwählen, um optional Lorem Ipsum Text einzufügen.",
+    "description": "Hotkey description of the edit mode"
   },
   "contextmenuInsertLoremIpsumSingleField": {
-    "message": "Lorem Ipsum einfügen (Strg+Shift+V)",
+    "message": "Lorem Ipsum einfügen (F9)",
     "description": "Name of the context menu entry for single field"
   },
   "contextmenuInsertLoremIpsumAllFields": {
     "message": "Alle Felder in diesem Formular befüllen",
     "description": "Name of the context menu entry for all fields"
+  },
+  "contextmenuToggleEditmode": {
+    "message": "Bearbeitungsmodus umschalten",
+    "description": "Toggle Edit Mode"
   },
   "optionsLoremIpsumLabel": {
     "message": "Bitte geben Sie hier Ihren eigenen Platzhaltertext ein oder lassen Sie das Feld leer, um den Standard-Lorem-Ipsum-Text zu verwenden",
@@ -23,6 +31,10 @@
     "message": "Die Einstellungen können nicht gespeichert werden. Bitte erlauben Sie Simple Lorem Ipsum in den localStorage zu speichern.",
     "description": "Cannot save options to storage"
   },
+  "optionsInvalidKey": {
+    "message": "Ungültiger Hotkey",
+    "description": "Invalid Hotkey"
+  },
   "popupLinkHelp": {
     "message": "Hilfe",
     "description": "Link label for help"
@@ -30,5 +42,13 @@
   "popupLinkBugs": {
     "message": "Fehler melden",
     "description": "Link label for bugs"
+  },
+  "contentInfoboxCharacters": {
+    "message": "Zeichen",
+    "description": "Characters in Infobox"
+  },
+  "contentInfoboxWords": {
+    "message": "Wörter",
+    "description": "Words in Infobox"
   }
 }

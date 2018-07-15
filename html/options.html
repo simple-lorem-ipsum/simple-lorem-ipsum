@@ -18,8 +18,13 @@
 
 		textarea {
 			width: 100%;
-			height: 250px;
+			height: 200px;
 			resize: none;
+			border: 1px solid #ccc;
+		}
+
+		input {
+			border: 1px solid #ccc;
 		}
 
 		p {
@@ -31,11 +36,18 @@
 			text-decoration: none;
 			border: 1px solid transparent;
 		}
+
+		input.warning {
+			border: 1px solid red !important;
+		}
 	</style>
 </head>
 <body>
 <label for="loremipsum" id="loremipsum_label"></label>
 <textarea id="loremipsum"></textarea>
+
+<h3>Hotkeys</h3>
+<div class="hotkeys"></div>
 <p>
 	<a id="help" href="https://simple-lorem-ipsum.github.io/" target="_blank">Help</a>
 	|

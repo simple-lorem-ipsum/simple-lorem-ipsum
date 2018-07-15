@@ -8,6 +8,17 @@ const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ' 
   'At vero eos et accusam et justo duo dolores et ea rebum. ' +
   'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ';
 
+let isEditModeActive = false;
+let editElement = null;
+let isHoverAllowed = true;
+
+const hoverClass = 'simple-lorem-ipsum__editmode-hover';
+const editClass = 'simple-lorem-ipsum__editmode-edit';
+const infoBoxClass = 'simple-lorem-ipsum__editmode-infobox';
+
+const translatedCharacters = browser.i18n.getMessage('contentInfoboxCharacters');
+const translatedWords = browser.i18n.getMessage('contentInfoboxWords');
+
 /**
  * load text from config, use constant as fallback
  *
@@ -71,7 +82,7 @@ function insertLoremIpsum(fillAllFields = false) {
       if (isValidFormElement(node)) {
         insertText(node, text);
       } else if (isInsideEditable(node)) {
-        node.innerHTML += `<p>${text}</p>`;
+        node.innerHTML += text;
       }
     }
   });
@@ -93,8 +104,129 @@ function insertText(node, newValue) {
   node.focus();
 }
 
+/**
+ * update infobox information
+ *
+ */
+function updateInfoBox() {
+  if (editElement) {
+    const pos = editElement.getBoundingClientRect();
+    const bottom = Math.ceil((window.pageYOffset || document.documentElement.scrollTop) + pos.bottom);
+    const left = Math.ceil((window.pageXOffset || document.documentElement.scrollLeft) + pos.left);
+    const box = document.querySelector('.' + infoBoxClass);
+    box.style.top = `${bottom}px`;
+    box.style.left = `${left}px`;
+    let text = isValidFormElement(editElement) ? editElement.value : editElement.textContent;
+    let wordCount = text.trim().split(' ').length;
+    box.textContent = `<${editElement.tagName}>, ${text.length} ${translatedCharacters}, ${wordCount} ${translatedWords}`;
+  }
+}
+
+/**
+ * reset all highlighting back to defaults
+ *
+ */
+function cleanupHighlighting() {
+  editElement = null;
+  isHoverAllowed = true;
+  document.querySelectorAll('.' + hoverClass).forEach((item) => item.classList.remove(hoverClass));
+  document.querySelectorAll('.' + editClass).forEach((item) => {
+    item.classList.remove(editClass);
+    item.removeAttribute('contenteditable');
+    item.removeEventListener('keyup', updateInfoBox);
+    item.removeEventListener('input', updateInfoBox);
+    item.removeEventListener('mouseup', updateInfoBox);
+    item.blur();
+  });
+}
+
+document.body.addEventListener('mouseover', function (e) {
+  if (isEditModeActive && isHoverAllowed) {
+    if (!e.target.classList.contains(editClass)) {
+      e.target.classList.add(hoverClass);
+    }
+    editElement = e.target;
+    updateInfoBox();
+  }
+});
+
+document.body.addEventListener('mouseout', function (e) {
+  e.target.classList.remove(hoverClass);
+});
+
+document.body.addEventListener('click', function (e) {
+  if (isEditModeActive && isHoverAllowed) {
+    cleanupHighlighting();
+    editElement = e.target;
+    isHoverAllowed = false;
+    updateInfoBox();
+    e.target.classList.add(editClass);
+    e.target.contentEditable = true;
+
+    e.target.addEventListener('keyup', updateInfoBox);
+    e.target.addEventListener('input', updateInfoBox);
+    e.target.addEventListener('mouseup', updateInfoBox);
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    return false;
+  }
+});
+
+
 browser.runtime.onMessage.addListener((request) => {
   if (request.status === 'insertLoremIpsum') {
     insertLoremIpsum(request.fillAllFields);
+  }
+
+  if (request.status === 'toggleLoremIpsumEditmode') {
+    isEditModeActive = !isEditModeActive;
+    if (isEditModeActive) {
+      cleanupHighlighting();
+
+      const style = document.createElement('style');
+      style.type = 'text/css';
+      style.id = 'simple-lorem-ipsum';
+      style.textContent = `
+        .${hoverClass} {
+          outline: 3px dashed red !important;
+        }
+        .${editClass} {
+          outline: 3px solid red !important;
+        }
+        .${infoBoxClass} {
+          position: absolute;
+          z-index: 9999;
+          color: red;
+          pointer-events: none;
+          margin-top: 2px;
+          background: #ddd;
+          padding: 3px 8px;
+          font-size: 14px;
+          font-family: arial;
+          left: 0;
+          top: 0;
+        }
+      `;
+      document.head.appendChild(style);
+
+      const box = document.createElement('div');
+      box.classList.add(infoBoxClass);
+      document.body.appendChild(box);
+
+      // find out the element which the mouse is currently on
+      const elements = document.querySelectorAll(':hover');
+      const currentElement = [].slice.call(elements).pop();
+      currentElement.classList.add(hoverClass);
+      editElement = currentElement;
+      updateInfoBox();
+
+    } else {
+      // cleanup
+      document.querySelector('.' + infoBoxClass).remove();
+      document.querySelector('style#simple-lorem-ipsum').remove();
+      cleanupHighlighting();
+    }
   }
 });

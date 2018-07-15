@@ -3,7 +3,7 @@
   "description": "__MSG_extensionDescription__",
   "homepage_url": "https://simple-lorem-ipsum.github.io/",
   "manifest_version": 2,
-  "version": "0.3.0",
+  "version": "1.0.0",
   "default_locale": "en",
   "icons": {
     "16": "icons/loremipsum_16.png",
@@ -36,9 +36,15 @@
   "commands": {
     "insert-lorem-ipsum": {
       "suggested_key": {
-        "default": "Ctrl+Shift+V"
+        "default": "F9"
       },
-      "description": "__MSG_extensionHotkey__"
+      "description": "__MSG_extensionHotkeyInsert__"
+    },
+    "toggle-lorem-ipsum-editmode": {
+      "suggested_key": {
+        "default": "F10"
+      },
+      "description": "__MSG_extensionHotkeyEditMode__"
     }
   },
   "options_ui": {
@@ -50,7 +56,8 @@
   ],
   "applications": {
     "gecko": {
-      "id": "jid0-aU64eWN4jFT0bhC8D6ESFb9yWHw@jetpack"
+      "id": "jid0-aU64eWN4jFT0bhC8D6ESFb9yWHw@jetpack",
+      "strict_min_version": "60.0"
     }
   }
 }

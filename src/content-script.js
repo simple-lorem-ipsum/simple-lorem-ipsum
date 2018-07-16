@@ -65,6 +65,27 @@ function isInsideEditable(node) {
 }
 
 /**
+ * check if the given node or parent node is a draggable link
+ * as it causes strange behaviour
+ * Typically found at news pages for teaser elements
+ * @see https://bugzilla.mozilla.org/show_bug.cgi?id=738749
+ *
+ * @param node
+ * @returns {boolean}
+ */
+function fixDraggableLink(node) {
+  let tempNode = node;
+  while (tempNode.parentNode) {
+    if (tempNode.tagName === 'A') {
+      tempNode.setAttribute('draggable', false);
+      return true;
+    }
+    tempNode = tempNode.parentNode;
+  }
+  return false;
+}
+
+/**
  * insert lorem ipsum dummy text
  *
  * @param fillAllFields
@@ -174,6 +195,7 @@ document.body.addEventListener('click', function (e) {
   if (isEditModeActive && isHoverAllowed) {
     cleanupHighlighting();
     editElement = e.target;
+    fixDraggableLink(editElement);
     isHoverAllowed = false;
     updateInfoBox();
     e.target.classList.add(editClass);
@@ -183,6 +205,8 @@ document.body.addEventListener('click', function (e) {
     e.target.addEventListener('input', updateInfoBox, true);
     e.target.addEventListener('mouseup', updateInfoBox, true);
     e.target.addEventListener('click', preventPropagation, true);
+    e.target.addEventListener('dragover', preventPropagation, true);
+    e.target.addEventListener('drop', preventPropagation, true);
 
     e.preventDefault();
     e.stopPropagation();

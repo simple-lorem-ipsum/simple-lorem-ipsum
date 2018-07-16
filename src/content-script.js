@@ -56,7 +56,7 @@ function isValidFormElement(item) {
 function isInsideEditable(node) {
   let tempNode = node;
   while (tempNode.parentNode) {
-    if (tempNode.contentEditable) {
+    if (tempNode.contentEditable === 'true') {
       return true;
     }
     tempNode = tempNode.parentNode;

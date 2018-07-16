@@ -71,7 +71,7 @@ function isInsideEditable(node) {
  */
 function insertLoremIpsum(fillAllFields = false) {
   getLoremIpsumFromConfig((text) => {
-    let node = document.activeElement;
+    let node = editElement || document.activeElement;
     if (fillAllFields === true) {
       for (let currentNode of node.form.elements) {
         if (isValidFormElement(currentNode)) {
@@ -83,6 +83,9 @@ function insertLoremIpsum(fillAllFields = false) {
         insertText(node, text);
       } else if (isInsideEditable(node)) {
         node.innerHTML += text;
+        if (editElement) {
+          updateInfoBox();
+        }
       }
     }
   });

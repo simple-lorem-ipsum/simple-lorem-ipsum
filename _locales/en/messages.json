@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Simple Lorem Ipsum fills form fields by using context menu or a hotkey (Ctrl+Shift+V).",
+    "message": "Edit any form field and page content to insert Lorem Ipsum dummy text.",
     "description": "Description of the extension"
   },
   "extensionHotkeyInsert": {
@@ -12,7 +12,7 @@
     "description": "Hotkey description of the edit mode"
   },
   "contextmenuInsertLoremIpsumSingleField": {
-    "message": "Insert Lorem Ipsum (F9)",
+    "message": "Insert Lorem Ipsum",
     "description": "Name of the context menu entry for single field"
   },
   "contextmenuInsertLoremIpsumAllFields": {

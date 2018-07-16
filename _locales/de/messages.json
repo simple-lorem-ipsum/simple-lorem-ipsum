@@ -1,6 +1,6 @@
 {
   "extensionDescription": {
-    "message": "Simple Lorem Ipsum befüllt Formularfelder über ein Kontextmenü oder einen Hotkey (Strg+Shift+V).",
+    "message": "Bearbeitet jedes Formularfeld und jedes Element auf der Seite, um Lorem Ipsum-Text einzufügen.",
     "description": "Description of the extension"
   },
   "extensionHotkeyInsert": {
@@ -12,7 +12,7 @@
     "description": "Hotkey description of the edit mode"
   },
   "contextmenuInsertLoremIpsumSingleField": {
-    "message": "Lorem Ipsum einfügen (F9)",
+    "message": "Lorem Ipsum einfügen",
     "description": "Name of the context menu entry for single field"
   },
   "contextmenuInsertLoremIpsumAllFields": {

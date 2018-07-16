@@ -133,11 +133,24 @@ function cleanupHighlighting() {
   document.querySelectorAll('.' + editClass).forEach((item) => {
     item.classList.remove(editClass);
     item.removeAttribute('contenteditable');
-    item.removeEventListener('keyup', updateInfoBox);
-    item.removeEventListener('input', updateInfoBox);
-    item.removeEventListener('mouseup', updateInfoBox);
+    item.removeEventListener('keyup', updateInfoBox, true);
+    item.removeEventListener('input', updateInfoBox, true);
+    item.removeEventListener('mouseup', updateInfoBox, true);
+    item.removeEventListener('click', preventPropagation, true);
     item.blur();
   });
+}
+
+/**
+ * disable default event handling
+ *
+ * @param e
+ * @returns {boolean}
+ */
+function preventPropagation(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  return false;
 }
 
 document.body.addEventListener('mouseover', function (e) {
@@ -148,11 +161,11 @@ document.body.addEventListener('mouseover', function (e) {
     editElement = e.target;
     updateInfoBox();
   }
-});
+}, true);
 
 document.body.addEventListener('mouseout', function (e) {
   e.target.classList.remove(hoverClass);
-});
+}, true);
 
 document.body.addEventListener('click', function (e) {
   if (isEditModeActive && isHoverAllowed) {
@@ -163,16 +176,17 @@ document.body.addEventListener('click', function (e) {
     e.target.classList.add(editClass);
     e.target.contentEditable = true;
 
-    e.target.addEventListener('keyup', updateInfoBox);
-    e.target.addEventListener('input', updateInfoBox);
-    e.target.addEventListener('mouseup', updateInfoBox);
+    e.target.addEventListener('keyup', updateInfoBox, true);
+    e.target.addEventListener('input', updateInfoBox, true);
+    e.target.addEventListener('mouseup', updateInfoBox, true);
+    e.target.addEventListener('click', preventPropagation, true);
 
     e.preventDefault();
     e.stopPropagation();
 
     return false;
   }
-});
+}, true);
 
 
 browser.runtime.onMessage.addListener((request) => {

@@ -205,9 +205,11 @@ browser.runtime.onMessage.addListener((request) => {
       style.textContent = `
         .${hoverClass} {
           outline: 3px dashed red !important;
+          outline-offset: -3px;
         }
         .${editClass} {
           outline: 3px solid red !important;
+          outline-offset: -3px;
         }
         .${infoBoxClass} {
           position: absolute;

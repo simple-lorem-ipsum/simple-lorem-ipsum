@@ -1,0 +1,54 @@
+{
+  "extensionDescription": {
+    "message": "Remplit n'importe quel champ de formulaire et page avec du texte factice Lorem Ipsum.",
+    "description": "Description of the extension"
+  },
+  "extensionHotkeyInsert": {
+    "message": "Raccourci pour insérer un texte 'Lorem Ipsum' dans le champ de formulaire actif.",
+    "description": "Hotkey description of the insert mode"
+  },
+  "extensionHotkeyEditMode": {
+    "message": "Raccourci pour sélectionner un élément pour modifier le texte et éventuellement insérer du texte Lorem Ipsum.",
+    "description": "Hotkey description of the edit mode"
+  },
+  "contextmenuInsertLoremIpsumSingleField": {
+    "message": "Insérer du Lorem Ipsum",
+    "description": "Name of the context menu entry for single field"
+  },
+  "contextmenuInsertLoremIpsumAllFields": {
+    "message": "Trouver tous les champs de ce formulaire",
+    "description": "Name of the context menu entry for all fields"
+  },
+  "contextmenuToggleEditmode": {
+    "message": "Passer en mode édition",
+    "description": "Toggle Edit Mode"
+  },
+  "optionsLoremIpsumLabel": {
+    "message": "Merci de spécifier votre Please specify your custom texte fictif ou laissez ce champ vide pour utiliser le texte Lorem Ipsum par défaut",
+    "description": "Lorem Ipsum label on options page"
+  },
+  "optionsStorageCannotSave": {
+    "message": "Impossible de sauvegarder les options dans l'espace de stockage. Merci d'autoriser Simple Lorem Ipsum à enregistrer des des données dans le LocalStorage pour enregistrer vos paramètres.",
+    "description": "Cannot save options to storage"
+  },
+  "optionsInvalidKey": {
+    "message": "Raccourci incorrect",
+    "description": "Invalid Hotkey"
+  },
+  "popupLinkHelp": {
+    "message": "Aide",
+    "description": "Link label for help"
+  },
+  "popupLinkBugs": {
+    "message": "Bugs",
+    "description": "Link label for bugs"
+  },
+  "contentInfoboxCharacters": {
+    "message": "Caractères",
+    "description": "Characters in Infobox"
+  },
+  "contentInfoboxWords": {
+    "message": "Mots",
+    "description": "Words in Infobox"
+  }
+}

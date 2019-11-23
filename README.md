@@ -9,6 +9,7 @@ Furthermore it provides an edit mode to customize any content on your webpage.
 * insert dummy text via context menu on form fields.
 * insert dummy text via hotkey ```F9``` in form fields or editable content elements (e.g. richtext editors).
 * toggle edit mode on and off via hotkey ```F10``` to edit any content on your page.
+* use two linebreaks in options page to separate sentences, to diversify dummy text on insert.
 
 You can also fill all sibling form fields of the selected form field automatically.
 Please consider, that currently only textarea, 
@@ -19,6 +20,10 @@ the given hotkeys.
 
 
 ## Changelog
+
+Version 1.1.0:
+* **[feature]** insert single sentences. To separate sentences in options, use two linebreaks.
+* **[feature]** french translation support 
 
 Version 1.0.0:
 * **[breaking change]** new hotkey ```F9``` because ```Ctrl+Alt+V``` was a registered Firefox hotkey to
@@ -32,8 +37,7 @@ Version 1.0.0:
 ## Requirements
 
 This extension has been successfully tested with:
-- Mozilla Firefox 61.0.1
-- Chromium 66.0
+- Mozilla Firefox 71.0b1
 
 Minimum requirement is Firefox 60.0.
 

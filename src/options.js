@@ -8,13 +8,13 @@ const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ' 
   'At vero eos et accusam et justo duo dolores et ea rebum. ' +
   'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ';
 
-let translate = browser.i18n.getMessage;
+const translate = browser.i18n.getMessage;
 
-let loremIpsum = document.getElementById('loremipsum');
-let loremIpsumLabel = document.getElementById('loremipsum_label');
-let hotkeys = document.querySelector('.hotkeys');
-let help = document.getElementById('help');
-let bugs = document.getElementById('bugs');
+const loremIpsum = document.getElementById('loremipsum');
+const loremIpsumLabel = document.getElementById('loremipsum_label');
+const hotkeys = document.querySelector('.hotkeys');
+const help = document.getElementById('help');
+const bugs = document.getElementById('bugs');
 
 // init labels and placeholders
 help.textContent = translate('popupLinkHelp');
@@ -35,7 +35,7 @@ browser.commands.getAll((commands) => {
   let html = '';
   commands.forEach((item) => {
     if (item.name !== '_execute_browser_action') {
-      html += `<label for="${item.name}">${translate(item.description.replace(/__MSG_(.*)__/, '$1'))}</label>`;
+      html += `<label for="${item.name}">${item.description}</label>`;
       html += `<input type="text" id="${item.name}" name="${item.name}" class="" value="${item.shortcut}" />`;
     }
   });

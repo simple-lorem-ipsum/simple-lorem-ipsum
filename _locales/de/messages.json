@@ -4,11 +4,11 @@
     "description": "Description of the extension"
   },
   "extensionHotkeyInsert": {
-    "message": "Tastenkombination um den Text 'Lorem Ipsum' in das fokussierte Eingabefeld einzufügen.",
+    "message": "Tastenkombination zum Einfügen von 'Lorem Ipsum'.",
     "description": "Hotkey description of the insert mode"
   },
   "extensionHotkeyEditMode": {
-    "message": "Tastenkombination um ein Element zur Modifikation auszuwählen, um optional Lorem Ipsum Text einzufügen.",
+    "message": "Tastenkombination zum Umschalten des Bearbeitungsmodus.",
     "description": "Hotkey description of the edit mode"
   },
   "contextmenuInsertLoremIpsumSingleField": {

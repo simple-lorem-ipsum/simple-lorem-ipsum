@@ -4,11 +4,11 @@
     "description": "Description of the extension"
   },
   "extensionHotkeyInsert": {
-    "message": "Raccourci pour insérer un texte 'Lorem Ipsum' dans le champ de formulaire actif.",
+    "message": "Raccourci pour insérer 'Lorem Ipsum'.",
     "description": "Hotkey description of the insert mode"
   },
   "extensionHotkeyEditMode": {
-    "message": "Raccourci pour sélectionner un élément pour modifier le texte et éventuellement insérer du texte Lorem Ipsum.",
+    "message": "Touche de raccourci pour basculer en mode édition.",
     "description": "Hotkey description of the edit mode"
   },
   "contextmenuInsertLoremIpsumSingleField": {

@@ -4,9 +4,18 @@ if (typeof browser === 'undefined') {
 }
 
 const LOREM_IPSUM = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, ' +
-  'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. ' +
-  'At vero eos et accusam et justo duo dolores et ea rebum. ' +
-  'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ';
+  'sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. \n\n' +
+  'At vero eos et accusam et justo duo dolores et ea rebum. \n\n' +
+  'Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. \n\n' +
+  'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, ' +
+  'vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui ' +
+  'blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. \n\n' +
+  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ' +
+  'sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. \n\n' +
+  'Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis ' +
+  'nisl ut aliquip ex ea commodo consequat. \n\n' +
+  'Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id ' +
+  'quod mazim placerat facer possim assum. ';
 
 let isEditModeActive = false;
 let editElement = null;
@@ -18,6 +27,8 @@ const infoBoxClass = 'simple-lorem-ipsum__editmode-infobox';
 
 const translatedCharacters = browser.i18n.getMessage('contentInfoboxCharacters');
 const translatedWords = browser.i18n.getMessage('contentInfoboxWords');
+
+let sentenceOffset = 0;
 
 /**
  * load text from config, use constant as fallback
@@ -32,6 +43,25 @@ function getLoremIpsumFromConfig(cb) {
       cb(LOREM_IPSUM);
     }
   });
+}
+
+/**
+ * get next sentence from given text
+ *
+ * @param text
+ * @returns {string}
+ */
+function getNextSentence(text) {
+  const lines = text.split('\n\n');
+
+  if (!lines[sentenceOffset]) {
+    sentenceOffset = 0;
+  }
+
+  const currentText = lines[sentenceOffset].trimEnd() + ' ';
+  sentenceOffset += 1;
+
+  return currentText;
 }
 
 /**
@@ -96,14 +126,14 @@ function insertLoremIpsum(fillAllFields = false) {
     if (fillAllFields === true) {
       for (let currentNode of node.form.elements) {
         if (isValidFormElement(currentNode)) {
-          insertText(currentNode, text);
+          insertText(currentNode, getNextSentence(text));
         }
       }
     } else {
       if (isValidFormElement(node)) {
-        insertText(node, text);
+        insertText(node, getNextSentence(text));
       } else if (isInsideEditable(node)) {
-        node.innerHTML += text;
+        node.innerHTML += getNextSentence(text);
         if (editElement) {
           updateInfoBox();
         }

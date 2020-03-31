@@ -1,0 +1,54 @@
+{
+  "extensionDescription": {
+    "message": "Edita cada campo de formulario y cada elemento de la página para insertar el texto de Lorem Ipsum.",
+    "description": "Description of the extension"
+  },
+  "extensionHotkeyInsert": {
+    "message": "Combinación de teclas para insertar 'Lorem Ipsum'.",
+    "description": "Hotkey description of the insert mode"
+  },
+  "extensionHotkeyEditMode": {
+    "message": "Combinación de teclas para cambiar el modo de edición.",
+    "description": "Hotkey description of the edit mode"
+  },
+  "contextmenuInsertLoremIpsumSingleField": {
+    "message": "Insertar Lorem Ipsum",
+    "description": "Name of the context menu entry for single field"
+  },
+  "contextmenuInsertLoremIpsumAllFields": {
+    "message": "Rellene todos los campos de este formulario",
+    "description": "Name of the context menu entry for all fields"
+  },
+  "contextmenuToggleEditmode": {
+    "message": "Cambiar el modo de edición",
+    "description": "Toggle Edit Mode"
+  },
+  "optionsLoremIpsumLabel": {
+    "message": "Por favor, introduzca su propio texto de marcador de posición aquí o deje el campo vacío para utilizar el texto estándar de Lorem Ipsum",
+    "description": "Lorem Ipsum label on options page"
+  },
+  "optionsStorageCannotSave": {
+    "message": "Los ajustes no se pueden guardar. Por favor, permite que el simple Lorem Ipsum sea almacenado en el localStorage.",
+    "description": "Cannot save options to storage"
+  },
+  "optionsInvalidKey": {
+    "message": "Tecla de acceso directo inválida",
+    "description": "Invalid hotkey"
+  },
+  "popupLinkHelp": {
+    "message": "Ayuda",
+    "description": "Link label for help"
+  },
+  "popupLinkBugs": {
+    "message": "informar de un error",
+    "description": "Link label for bugs"
+  },
+  "contentInfoboxCharacters": {
+    "message": "Carácter",
+    "description": "Characters in Infobox"
+  },
+  "contentInfoboxWords": {
+    "message": "Palabras",
+    "description": "Words in Infobox"
+  }
+}

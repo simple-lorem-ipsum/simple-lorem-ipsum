@@ -123,17 +123,23 @@ function fixDraggableLink(node) {
 function insertLoremIpsum(fillAllFields = false) {
   getLoremIpsumFromConfig((text) => {
     let node = editElement || document.activeElement;
+
+    // handle iframes differently
+    if (node.nodeName === 'IFRAME') {
+      node = node.contentWindow.document.activeElement;
+    }
+
     if (fillAllFields === true) {
       for (let currentNode of node.form.elements) {
         if (isValidFormElement(currentNode)) {
-          insertText(currentNode, getNextSentence(text));
+          insertFormText(currentNode, getNextSentence(text));
         }
       }
     } else {
       if (isValidFormElement(node)) {
-        insertText(node, getNextSentence(text));
+        insertFormText(node, getNextSentence(text));
       } else if (isInsideEditable(node)) {
-        node.innerHTML += getNextSentence(text);
+        insertEditableText(node, getNextSentence(text));
         if (editElement) {
           updateInfoBox();
         }
@@ -143,19 +149,46 @@ function insertLoremIpsum(fillAllFields = false) {
 }
 
 /**
- * insert text into the given dom node at current cursor position
+ * insert text into the given form element node at current cursor position
  *
  * @param node
  * @param newValue
  */
-function insertText(node, newValue) {
+function insertFormText(node, newValue) {
   let start = node.selectionStart;
   let oldValue = node.value;
   let before = oldValue.substring(0, start);
   let after = oldValue.substring(node.selectionEnd, oldValue.length);
   node.value = before + newValue + after;
+  // collapse node at the end to enable insertion of multiple texts
   node.selectionStart = node.selectionEnd = start + newValue.length;
   node.focus();
+}
+
+/**
+ * insert text into given dom node at current cursor position
+ * this works also within iframes, e.g. rich text editors
+ *
+ * @param node
+ * @param newValue
+ */
+function insertEditableText(node, newValue) {
+  const selection = node.getRootNode().getSelection();
+  const range = selection.getRangeAt(0);
+  const start = range.startOffset;
+  const end = range.endOffset;
+  const oldValue = range.startContainer.textContent;
+  const before = oldValue.substring(0, start);
+  const after = oldValue.substring(end, oldValue.length);
+  range.startContainer.textContent = before + newValue + after;
+  // collapse node at the end to enable insertion of multiple texts
+  range.setStart(range.startContainer, start + newValue.length);
+  range.setEnd(range.startContainer, start + newValue.length);
+  if(range.startContainer === range.startContainer.TEXT_NODE) {
+    range.startContainer.parentNode.focus();
+  } else {
+    range.startContainer.focus();
+  }
 }
 
 /**

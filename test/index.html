@@ -15,5 +15,17 @@
 	</p>
 </form>
 <p><iframe src="test.html"></iframe></p>
+<p>
+	<input type="text" /><br />
+	<iframe src="" id="localiframe"></iframe>
+	<script>
+		window.addEventListener('load', () => {
+			const iframe = document.querySelector('#localiframe');
+			const doc = iframe.contentWindow.document;
+			doc.body.innerHTML = '<p>Test</p>';
+			doc.body.contentEditable = true;
+		});
+	</script>
+</p>
 </body>
 </html>

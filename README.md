@@ -21,6 +21,11 @@ the given hotkeys.
 
 ## Changelog
 
+Version 1.2.0:
+* **[improvement]** better support of rich text editors using iframes, like CKEditor and TinyMCE.
+* **[bugfix]** using hotkey in iframes doesn't trigger inserting dummy text twice anymore
+* **[feature]** spanish translation support
+
 Version 1.1.0:
 * **[feature]** insert single sentences. To separate sentences in options, use two linebreaks.
 * **[feature]** french translation support 
@@ -37,7 +42,7 @@ Version 1.0.0:
 ## Requirements
 
 This extension has been successfully tested with:
-- Mozilla Firefox 71.0b1
+- Mozilla Firefox 75.0b10
 
 Minimum requirement is Firefox 60.0.
 

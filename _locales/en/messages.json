@@ -32,8 +32,8 @@
     "description": "Cannot save options to storage"
   },
   "optionsInvalidKey": {
-    "message": "Invalid Hotkey",
-    "description": "Invalid Hotkey"
+    "message": "Invalid hotkey",
+    "description": "Invalid hotkey"
   },
   "popupLinkHelp": {
     "message": "Help",

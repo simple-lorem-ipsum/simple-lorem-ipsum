@@ -280,6 +280,11 @@ document.body.addEventListener('click', function (e) {
 
 
 browser.runtime.onMessage.addListener((request) => {
+  if(!document.hasFocus()) {
+    // only process hotkeys when document has the focus
+    return;
+  }
+
   if (request.status === 'insertLoremIpsum') {
     insertLoremIpsum(request.fillAllFields);
   }

@@ -156,9 +156,17 @@ function insertLoremIpsum(fillAllFields = false) {
  */
 function insertFormText(node, newValue) {
   let start = node.selectionStart;
+  let end = node.selectionEnd;
   let oldValue = node.value;
   let before = oldValue.substring(0, start);
-  let after = oldValue.substring(node.selectionEnd, oldValue.length);
+  let after = oldValue.substring(end, oldValue.length);
+
+  // respect maxLength attribute
+  if (node.maxLength !== -1) {
+    let newValueSize = node.maxLength - oldValue.length - (start - end);
+    newValue = newValue.substr(0, newValueSize);
+  }
+
   node.value = before + newValue + after;
   // collapse node at the end to enable insertion of multiple texts
   node.selectionStart = node.selectionEnd = start + newValue.length;
@@ -184,7 +192,7 @@ function insertEditableText(node, newValue) {
   // collapse node at the end to enable insertion of multiple texts
   range.setStart(range.startContainer, start + newValue.length);
   range.setEnd(range.startContainer, start + newValue.length);
-  if(range.startContainer === range.startContainer.TEXT_NODE) {
+  if (range.startContainer === range.startContainer.TEXT_NODE) {
     range.startContainer.parentNode.focus();
   } else {
     range.startContainer.focus();
@@ -280,7 +288,7 @@ document.body.addEventListener('click', function (e) {
 
 
 browser.runtime.onMessage.addListener((request) => {
-  if(!document.hasFocus()) {
+  if (!document.hasFocus()) {
     // only process hotkeys when document has the focus
     return;
   }

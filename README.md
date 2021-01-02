@@ -21,6 +21,9 @@ the given hotkeys.
 
 ## Changelog
 
+Version 1.3.0:
+* **[improvement]** respect maxLength attribute
+
 Version 1.2.0:
 * **[improvement]** better support of rich text editors using iframes, like CKEditor and TinyMCE.
 * **[bugfix]** using hotkey in iframes doesn't trigger inserting dummy text twice anymore
@@ -42,7 +45,7 @@ Version 1.0.0:
 ## Requirements
 
 This extension has been successfully tested with:
-- Mozilla Firefox 75.0b10
+- Mozilla Firefox 85.0b4
 
 Minimum requirement is Firefox 60.0.
 

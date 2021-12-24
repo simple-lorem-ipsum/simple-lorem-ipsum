@@ -58,20 +58,21 @@
 		<textarea id="loremipsum" name="dummy_text"></textarea>
 	</div>
 	<div class="row">
-		<input type="checkbox" id="shuffle-text" name="shuffle_text">
+		<input type="hidden" name="shuffle_text" value="0">
+		<input type="checkbox" id="shuffle-text" name="shuffle_text" value="1">
 		<label for="shuffle-text">Shuffle sentences in dummy text</label>
 	</div>
 	<div class="row">
 		<label for="text-length-inpit-min"><code>input</code> words, min:</label>
-		<input type="number" min="1" step="1" id="text-length-inpit-min" name="text_length[input][min]">
+		<input type="number" min="1" step="1" id="text-length-inpit-min" name="text_length[input][min]" value="5">
 		<label for="text-length-inpit-max">max:</label>
-		<input type="number" min="1" step="1" id="text-length-inpit-max" name="text_length[input][max]">
+		<input type="number" min="1" step="1" id="text-length-inpit-max" name="text_length[input][max]" value="10">
 	</div>
 	<div class="row">
 		<label for="text-length-textarea-min"><code>textarea</code> sentences, min:</label>
-		<input type="number" min="1" step="1" id="text-length-textarea-min" name="text_length[textarea][min]">
+		<input type="number" min="1" step="1" id="text-length-textarea-min" name="text_length[textarea][min]" value="1">
 		<label for="text-length-textarea-max">max:</label>
-		<input type="number" min="1" step="1" id="text-length-textarea-max" name="text_length[textarea][max]">
+		<input type="number" min="1" step="1" id="text-length-textarea-max" name="text_length[textarea][max]" value="5">
 	</div>	
 
 	<h3>Hotkeys</h3>

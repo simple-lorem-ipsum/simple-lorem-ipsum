@@ -58,36 +58,38 @@
 	</style>
 </head>
 <body>
-	<h3>Text options</h3>
-	<div class="row">
-		<label for="loremipsum">Dummy text</label>
-		<textarea id="loremipsum" name="dummy_text"></textarea>
-	</div>
-	<div class="row">
-		<input type="checkbox" id="shuffle-text" name="shuffle_text" value="0">
-		<label for="shuffle-text">Shuffle sentences in dummy text</label>
-	</div>
-	<div class="row">
-		<label for="text-length-inpit-min"><code>input</code> words, min:</label>
-		<input type="number" min="1" step="1" id="text-length-inpit-min" name="text_length[input][min]" value="5">
-		<label for="text-length-inpit-max">max:</label>
-		<input type="number" min="1" step="1" id="text-length-inpit-max" name="text_length[input][max]" value="10">
-	</div>
-	<div class="row">
-		<label for="text-length-textarea-min"><code>textarea</code> sentences, min:</label>
-		<input type="number" min="1" step="1" id="text-length-textarea-min" name="text_length[textarea][min]" value="1">
-		<label for="text-length-textarea-max">max:</label>
-		<input type="number" min="1" step="1" id="text-length-textarea-max" name="text_length[textarea][max]" value="5">
-	</div>	
+	<form id="form">
+		<h3>Text options</h3>
+		<div class="row">
+			<label for="loremipsum">Dummy text</label>
+			<textarea id="loremipsum" name="dummy_text"></textarea>
+		</div>
+		<div class="row">
+			<input type="checkbox" id="shuffle-text" name="shuffle_text" value="1">
+			<label for="shuffle-text">Shuffle sentences in dummy text</label>
+		</div>
+		<div class="row">
+			<label for="text-length-inpit-min"><code>input</code> words, min:</label>
+			<input type="number" min="1" step="1" id="text-length-inpit-min" name="text_length[input][min]" value="5">
+			<label for="text-length-inpit-max">max:</label>
+			<input type="number" min="1" step="1" id="text-length-inpit-max" name="text_length[input][max]" value="10">
+		</div>
+		<div class="row">
+			<label for="text-length-textarea-min"><code>textarea</code> sentences, min:</label>
+			<input type="number" min="1" step="1" id="text-length-textarea-min" name="text_length[textarea][min]" value="1">
+			<label for="text-length-textarea-max">max:</label>
+			<input type="number" min="1" step="1" id="text-length-textarea-max" name="text_length[textarea][max]" value="5">
+		</div>	
 
-	<h3>Hotkeys</h3>
-	<div class="row" id="hotkeys">
-	</div>
-	<div class="row align-right">
-		<a id="help" href="https://simple-lorem-ipsum.github.io/" target="_blank">Help</a>
-		|
-		<a id="bugs" href="https://github.com/simple-lorem-ipsum/simple-lorem-ipsum/issues" target="_blank">Bug report</a>
-	</div>
+		<h3>Hotkeys</h3>
+		<div class="row" id="hotkeys">
+		</div>
+		<div class="row align-right">
+			<a id="help" href="https://simple-lorem-ipsum.github.io/" target="_blank">Help</a>
+			|
+			<a id="bugs" href="https://github.com/simple-lorem-ipsum/simple-lorem-ipsum/issues" target="_blank">Bug report</a>
+		</div>
+	</form>
 	<script src="../src/options.js"></script>
 </body>
 </html>

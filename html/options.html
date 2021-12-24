@@ -4,55 +4,55 @@
 	<meta charset="UTF-8">
 	<title>Settings</title>
 	<style>
-		html, body {
-			font-family: Helvetica, Arial, sans-serif;
-			font-size: 1rem;
-			line-height: 1.4;
-			padding: .5rem;
-		}
-		label {
-			font-style: italic;
-		}
-		input, textarea {
-			border: 1px solid #adb5bd;
-			border-radius: .1rem;
-		}
-		textarea {
-			display: block;
-			height: 4rem;
-			resize: none;
-		}
-		input {
-			margin: 0 .1rem;
-		}
-		input[type="checkbox"] {
-			margin-left: 0 !important;
-		}
-		a {
-			color: #212529;
-			text-decoration: none;
-		}
-		a:hover, a:focus {
-			color: #343a40;
-		}
-		h3 {
-			margin: 0 0 .25rem 0;
-			padding: 0;
-			line-height: 1.2;
-		}
-		.row {
-			margin-bottom: .25rem;
-		}
-		.align-right {
-			text-align: right;
-		}
-		input.warning {
-			border-color: #b02a37 !important;
-		}
+	html, body {
+		font-family: Helvetica, Arial, sans-serif;
+		font-size: 1rem;
+		line-height: 1.4;
+		padding: .5rem;
+	}
+	label {
+		font-style: italic;
+	}
+	input, textarea {
+		border: 1px solid #adb5bd;
+		border-radius: .1rem;
+	}
+	textarea {
+		display: block;
+		height: 4rem;
+		resize: none;
+	}
+	input {
+		margin: 0 .1rem;
+	}
+	input[type="checkbox"] {
+		margin-left: 0 !important;
+	}
+	a {
+		color: #212529;
+		text-decoration: none;
+	}
+	a:hover, a:focus {
+		color: #343a40;
+	}
+	h3 {
+		margin: 0 0 .25rem 0;
+		padding: 0;
+		line-height: 1.2;
+	}
+	.row {
+		margin-bottom: .25rem;
+	}
+	.align-right {
+		text-align: right;
+	}
+	input.warning {
+		border-color: #b02a37 !important;
+	}
 	</style>
 </head>
 <body>
-	<h3>Text options:</h3>
+	<h3>Text options</h3>
 	<div class="row">
 		<label for="loremipsum">Dummy text</label>
 		<textarea id="loremipsum" name="dummy_text"></textarea>
@@ -75,11 +75,12 @@
 	</div>	
 
 	<h3>Hotkeys</h3>
-	<div class="row hotkeys"></div>
+	<div class="row" id="hotkeys">
+	</div>
 	<div class="row align-right">
 		<a id="help" href="https://simple-lorem-ipsum.github.io/" target="_blank">Help</a>
 		|
-		<a id="bugs" href="https://github.com/simple-lorem-ipsum/simple-lorem-ipsum/issues" target="_blank">Bugs</a>
+		<a id="bugs" href="https://github.com/simple-lorem-ipsum/simple-lorem-ipsum/issues" target="_blank">Bug report</a>
 	</div>
 	<script src="../src/options.js"></script>
 </body>

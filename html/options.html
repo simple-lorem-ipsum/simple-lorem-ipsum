@@ -2,57 +2,85 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Options - Simple Lorem Ipsum</title>
+	<title>Settings</title>
 	<style>
 		html, body {
 			font-family: Helvetica, Arial, sans-serif;
-			padding: 5px;
+			font-size: 1rem;
+			line-height: 1.4;
+			padding: .5rem;
 		}
-
 		label {
-			font-size: 100%;
 			font-style: italic;
-			font-family: Helvetica, Arial, sans-serif;
-			display: block;
 		}
-
+		input, textarea {
+			border: 1px solid #adb5bd;
+			border-radius: .1rem;
+		}
 		textarea {
-			width: 100%;
-			height: 200px;
+			display: block;
+			height: 4rem;
 			resize: none;
-			border: 1px solid #ccc;
 		}
-
 		input {
-			border: 1px solid #ccc;
+			margin: 0 .1rem;
 		}
-
-		p {
+		input[type="checkbox"] {
+			margin-left: 0 !important;
+		}
+		a {
+			color: #212529;
+			text-decoration: none;
+		}
+		a:hover, a:focus {
+			color: #343a40;
+		}
+		h3 {
+			margin: 0 0 .25rem 0;
+			padding: 0;
+			line-height: 1.2;
+		}
+		.row {
+			margin-bottom: .25rem;
+		}
+		.align-right {
 			text-align: right;
 		}
-
-		a {
-			color: #000000;
-			text-decoration: none;
-			border: 1px solid transparent;
-		}
-
 		input.warning {
-			border: 1px solid red !important;
+			border-color: #b02a37 !important;
 		}
 	</style>
 </head>
 <body>
-<label for="loremipsum" id="loremipsum_label"></label>
-<textarea id="loremipsum"></textarea>
+	<h3>Text options:</h3>
+	<div class="row">
+		<label for="loremipsum">Dummy text</label>
+		<textarea id="loremipsum" name="dummy_text"></textarea>
+	</div>
+	<div class="row">
+		<input type="checkbox" id="shuffle-text" name="shuffle_text">
+		<label for="shuffle-text">Shuffle sentences in dummy text</label>
+	</div>
+	<div class="row">
+		<label for="text-length-inpit-min"><code>input</code> words, min:</label>
+		<input type="number" min="1" step="1" id="text-length-inpit-min" name="text_length[input][min]">
+		<label for="text-length-inpit-max">max:</label>
+		<input type="number" min="1" step="1" id="text-length-inpit-max" name="text_length[input][max]">
+	</div>
+	<div class="row">
+		<label for="text-length-textarea-min"><code>textarea</code> sentences, min:</label>
+		<input type="number" min="1" step="1" id="text-length-textarea-min" name="text_length[textarea][min]">
+		<label for="text-length-textarea-max">max:</label>
+		<input type="number" min="1" step="1" id="text-length-textarea-max" name="text_length[textarea][max]">
+	</div>	
 
-<h3>Hotkeys</h3>
-<div class="hotkeys"></div>
-<p>
-	<a id="help" href="https://simple-lorem-ipsum.github.io/" target="_blank">Help</a>
-	|
-	<a id="bugs" href="https://github.com/simple-lorem-ipsum/simple-lorem-ipsum/issues" target="_blank">Bugs</a>
-</p>
-<script src="../src/options.js"></script>
+	<h3>Hotkeys</h3>
+	<div class="row hotkeys"></div>
+	<div class="row align-right">
+		<a id="help" href="https://simple-lorem-ipsum.github.io/" target="_blank">Help</a>
+		|
+		<a id="bugs" href="https://github.com/simple-lorem-ipsum/simple-lorem-ipsum/issues" target="_blank">Bugs</a>
+	</div>
+	<script src="../src/options.js"></script>
 </body>
 </html>
